@@ -29,7 +29,7 @@ const Conatiner = styled.div`
         display: flex;
         gap: 1rem;
         flex-direction: column;
-        border: 1px solid #d8d7d7;
+        /* border: 1px solid #d8d7d7; */
         padding: 1rem;
        
         .content {

@@ -39,7 +39,7 @@ const CardItem = () => {
     const handleChange = (value) => {
         setCurrentPage(value)
         window.scroll({
-            top: 870,
+            top: 850,
             behavior: 'smooth'
         })
     }
@@ -67,6 +67,10 @@ const CardItem = () => {
 
 const Container = styled.div`
     margin: 0 auto;
+    @media only screen and (max-width: 685px) {
+        display: flex;
+        justify-content: center;
+    }
     .panigation {
         position: absolute;
         margin: 1rem auto;

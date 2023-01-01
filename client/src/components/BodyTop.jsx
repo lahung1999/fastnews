@@ -5,35 +5,9 @@ import ReactPaginate from 'react-paginate';
 import Trending from './Trending';
 import CardItem from './CardItem';
 import Video from './Video';
+import banner from '../assets/img/banner.jpeg'
 
 const BodyTop = () => {
-
-
-    // function PaginatedItems({ itemsPerPage }) {
-        // We start with an empty list of items.
-        // const [currentItems, setCurrentItems] = useState(null);
-        // const [pageCount, setPageCount] = useState(0);
-        // // Here we use item offsets; we could also use page offsets
-        // // following the API or data you're working with.
-        // const [itemOffset, setItemOffset] = useState(0);
-      
-        // useEffect(() => {
-        //   // Fetch items from another resources.
-        //   const endOffset = itemOffset + itemsPerPage;
-        //   console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-        //   setCurrentItems(items.slice(itemOffset, endOffset));
-        //   setPageCount(Math.ceil(items.length / itemsPerPage));
-        // }, [itemOffset, itemsPerPage]);
-      
-        // // Invoke when user click to request another page.
-        // const handlePageClick = (event) => {
-        //   const newOffset = (event.selected * itemsPerPage) % items.length;
-        //   console.log(
-        //     `User requested page number ${event.selected}, which is offset ${newOffset}`
-        //   );
-        //   setItemOffset(newOffset);
-        // };
-
 
   return (
     <Container>
@@ -48,6 +22,7 @@ const BodyTop = () => {
             <div className="trending">
                 <Trending />
                 <Video />
+                <img src={banner} alt='Banner'/>
             </div>
         </div>
     </Container>
@@ -94,16 +69,26 @@ const Container = styled.div`
         display: grid;
         grid-template-columns: 2fr 1fr;
         gap: 1rem;
+        @media only screen and (max-width: 685px) {
+            grid-template-columns: 1fr;
+        }
         .content {
             margin: 2rem 0;
-            border: 1px solid #d8d7d7;
+            /* border: 1px solid #d8d7d7; */
             padding: 1rem;
             display: flex;
             flex-direction: column;
+            height: auto;
+            @media only screen and (max-width: 685px) {
+                padding: 0;
+            }
             &__item {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 margin-bottom: 3rem;
+                @media only screen and (max-width: 685px) {
+                    grid-template-columns: 2fr;
+                }
             }
         }
         .trending {
@@ -111,6 +96,12 @@ const Container = styled.div`
             display: flex;
             flex-direction: column;
             gap: 1rem;
+            img {
+                width: 100%;
+            }
+            @media only screen and (max-width: 685px){
+                display: none;
+            }
         }
     }
 `

@@ -55,6 +55,9 @@ const Container = styled.div`
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: 1rem;
+        @media only screen and (max-width: 685px) {
+            grid-template-columns: 1fr;
+        }
     }
 `
 

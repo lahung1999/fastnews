@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components'
 import Home from './pages/Home';
 import { BsArrowUpShort } from 'react-icons/bs'
@@ -11,10 +11,20 @@ import Hot from './pages/Hot';
 import News from './pages/News';
 import VideoDetailPage from './pages/VideoDetailPage';
 import Category from './pages/Category';
-import Authencation from './pages/Authencation';
-
+import Login from './pages/Login';
+import { useNavigate,useLocation } from 'react-router-dom';
+import SignUp from './pages/SignUp';
 function App() {
+  const { pathname } = useLocation();
+  const [showHeaderFooter,setShowHeaderFooter] = useState(true)
 
+  useEffect(()=>{
+    if(pathname == "/login" || pathname == "/signup"){
+      setShowHeaderFooter(false)
+    }else{
+      setShowHeaderFooter(true)
+    }
+  },[pathname])
   useEffect(() => {
     window.onscroll = () => {
       if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 20) {
@@ -32,24 +42,35 @@ function App() {
     });
   };
 
+  
   return (
+
     <Container>
       <div className="blur" style={{top:'-18%', right: 0}}></div>
       <div className="blur" style={{top:'30%', left: '-8rem'}}></div>
       <div className='scrollTop' id='btnOnTop' onClick={scrollToTop}>
         <BsArrowUpShort />
       </div>
-      <Header />
-      <Routes>
-        <Route path='/' element={<Home />}/>
-        <Route path='/video' element={<VideoPage />}/>
-        <Route path='/video/:videoId' element={<VideoDetailPage />}/>
-        <Route path='/hot' element={<Hot />} />
-        <Route path='/hot/:id' element={<News />} />
-        <Route path='/category/:categoryId' element={<Category />} />
-        <Route path='/login' element={<Authencation />} />
-      </Routes>
-      <Footer />
+    
+          {showHeaderFooter ?  <Header /> : null } 
+        <Routes>
+          <Route path='/' element={<Home />}/>
+          <Route path='/video' element={<VideoPage />}/>
+          <Route path='/video/:videoId' element={<VideoDetailPage />}/>
+          <Route path='/hot' element={<Hot />} />
+          <Route path='/hot/:id' element={<News />} />
+          <Route path='/category/:categoryId' element={<Category />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/signup' element={<SignUp />} />
+        </Routes>
+
+        {showHeaderFooter ?  <Footer />  : null } 
+        
+      
+      
+         
+  
+        
     </Container>
   );
 }
@@ -62,6 +83,10 @@ const Container = styled.div`
     background-color: #f3f3f3;
     padding: 1rem 5rem;
     gap: 1rem;
+
+    @media only screen and (max-width: 685px) {
+      padding: 1rem;
+    }
     .blur {
       position: absolute;
       width: 22rem;

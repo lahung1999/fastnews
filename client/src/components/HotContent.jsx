@@ -7,7 +7,8 @@ import Loading from './Loading'
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Divider } from 'antd';
 
-const HotContent = ({loading, setLoading}) => {
+
+const HotContent = ({loading, setLoading, searchData}) => {
     const [hotnews, setHotNews] = useState([])
 
     const loadMoreData = () => {
@@ -24,10 +25,10 @@ const HotContent = ({loading, setLoading}) => {
           .catch (() => {
               setLoading(false)
           }
-          )
-      
-        
+        ) 
     }
+
+    console.log('======',searchData);
 
     useEffect(()=> {
         loadMoreData()
@@ -53,11 +54,25 @@ const HotContent = ({loading, setLoading}) => {
                     scrollableTarget="scrollableDiv"
                     
                 >
-            {
+            { searchData === undefined ?
                 hotnews.map((item, index)=> {
                     return (
+                        <>
+                            <Link to={`/hot/${item.idArticle}`} className='hotItem' key={index}>
+                                <img src={item.urlIamge} alt="" />
+                                <div className='itemSlide'>
+                                    <span>{item.create_time}</span>
+                                    <p className="legend">{item.title}</p>
+                                </div>
+                            </Link>
+                            
+                        </>
+                    )
+                }) :
+                searchData.map((item, index)=> {
+                    return (
                         <Link to={`/hot/${item.idArticle}`} className='hotItem' key={index}>
-                            <img src={item.urlIamge} alt="" />
+                            <img src={item.urlImage} alt="" />
                             <div className='itemSlide'>
                                 <span>{item.create_time}</span>
                                 <p className="legend">{item.title}</p>

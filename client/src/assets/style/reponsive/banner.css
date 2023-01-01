@@ -1,0 +1,5 @@
+@media only screen and (max-width: 685px) {
+    .headingSlide {
+        display: none !important;
+    }
+}

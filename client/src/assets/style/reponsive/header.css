@@ -1,0 +1,43 @@
+@media only screen and (max-width: 685px) {
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 50px !important;
+        z-index: 99;
+    }
+    .icon-menu {
+        display: block !important;
+        width: 100%;
+        font-size: 35px;
+        margin-top: 6px;
+        font-weight: 400;
+        margin-left: 10px;
+    }
+    .logoLink {
+        display: none;
+        align-items: center;
+    }
+
+    .logoMobile {
+        display: block !important;
+    }
+
+    .menu {
+        display: none !important;
+    }
+
+    .dropdown-content {
+        display: flex;
+        flex-direction: column;
+        font-size: 20px;
+        font-weight: 400;
+        gap: 1rem;
+        padding: 1rem;
+        border-bottom: 1px solid #bfbdbd;
+    }
+
+    .dropdown-content a {
+        color: #3d3d3d !important; 
+    }
+}

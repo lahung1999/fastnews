@@ -2,6 +2,7 @@ import React,{ useState, useEffect } from 'react';
 import styled from 'styled-components';
 import  Carousel  from 'nuka-carousel';
 import '../App.css'
+import '../assets/style/reponsive/banner.css'
 import { useNavigate } from 'react-router-dom';
 
 import GetData from '../api/GetData';
@@ -28,6 +29,7 @@ const Slideshow = () => {
     return (
         <>
         <span
+            className='headingSlide'
             style={{
                 fontSize: 15,
                 paddingTop:5,
@@ -83,6 +85,9 @@ const Container = styled.div`
     gap: 1rem;
     position: relative;
     margin-bottom: 1rem;
+    @media only screen and (max-width: 685px) {
+        display: none !important;
+    }
     img {
         width: 100px;
         height: 100px;

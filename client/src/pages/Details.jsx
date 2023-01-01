@@ -31,7 +31,7 @@ const Conatiner = styled.div`
         display: flex;
         gap: 1rem;
         flex-direction: column;
-        border: 1px solid #d8d7d7;
+        /* border: 1px solid #d8d7d7; */
         padding: 1rem;
         .heading {
             position: relative;
@@ -71,6 +71,10 @@ const Conatiner = styled.div`
         display: flex;
         flex-direction: column;
         gap: 1rem;
+
+        @media only screen and (max-width: 685px) {
+            display: none;
+        }
     }
 `
 

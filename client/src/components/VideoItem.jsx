@@ -20,8 +20,8 @@ const VideoItem = () => {
         {
             videos.map((item, index)=> {
                 return (
-                    <Link to={item.idVideo} className='haizz'>
-                        <div className="video" key={index}>
+                    <Link to={item.idVideo} className='haizz' key={index}>
+                        <div className="video" >
                             <HoverVideoPlayer
                                 videoSrc={item.urlVideo}
                                 style={{

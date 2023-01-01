@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import GetData from '../api/GetData'
 import { useNavigate } from 'react-router-dom'
+import '../assets/style/reponsive/banner.css'
+
 
 const Banner = () => {
 
@@ -23,7 +25,7 @@ const Banner = () => {
     }
 
   return (
-    <Container>
+    <Container className='banner'>
         {
             data.map((item,index) => {
                 return(
@@ -36,8 +38,8 @@ const Banner = () => {
                             <h3>{item.title}</h3>
                             <h6>{item.summary}</h6>
                             <div>
-                                <span >By Hung Pro</span> 
-                                <span className='author'>30 Nov 2022</span>
+                                <span >{item.name_page}</span> 
+                                <span className='author'>{item.create_time}</span>
                             </div>
                         </div>
                     </div>

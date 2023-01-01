@@ -35,8 +35,8 @@ const SponsoredItem = () => {
 
                         </div>
                         <div className='itemAuth'>
-                            <span >By Hung</span> 
-                            <span className='author'>30 Nov 2022</span>
+                            <span >{item.name_page}</span> 
+                            <span className='author'>{item.create_time}</span>
                         </div>
                     </Container>
                 )

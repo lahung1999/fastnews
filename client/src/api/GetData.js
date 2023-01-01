@@ -162,6 +162,111 @@ const getVideoByid = async (id) => {
   }
 }
 
+const searchNews = async (keyword) => {
+  if (!keyword) return {};
+
+  const endpoint = 'getsearch.php';
+  const config = {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  };
+
+  const bodyForm = new FormData();
+  bodyForm.append('keyword', keyword);
+
+  try {
+    const response = await getApi.post(endpoint, bodyForm, config);
+    return response.data;
+    
+  } catch (error) {
+    console.log('Error while searching - searchPost newsAPi', error);
+  }
+}
+
+const signUp = async ({email,username,password}) => {
+
+  const endpoint = 'apilo.php?lo=signup';
+  const config = {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  };
+
+  const bodyForm = new FormData();
+  // bodyForm.append('name', name);
+  bodyForm.append('username', username);
+  bodyForm.append('email', email);
+  bodyForm.append('password', password);
+
+  try {
+    const response = await getApi.post(endpoint, bodyForm, config);
+    
+    return response.data;
+    
+  } catch (error) {
+    console.log('Error while send - searchPost newsAPi', error);
+  }
+}
+
+const login = async ({username,password}) => {
+
+  const endpoint = 'apilo.php?lo=login';
+  const config = {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  };
+
+  const bodyForm = new FormData();
+  bodyForm.append('username', username);
+  bodyForm.append('password', password);
+
+  try {
+    const response = await getApi.post(endpoint, bodyForm, config);
+    
+    return response.data;
+    
+  } catch (error) {
+    console.log('Error while send - searchPost newsAPi', error);
+  }
+}
+
+const saveNews = async (id_user, idArticle) => {
+
+  const endpoint = 'savenews.php';
+  const config = {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  };
+
+  const bodyForm = new FormData();
+  bodyForm.append('iduser', id_user);
+  bodyForm.append('idarticle', idArticle);
+
+  try {
+    const response = await getApi.post(endpoint, bodyForm, config);
+    return response.data;
+    
+  } catch (error) {
+    console.log('Error while save - searchPost newsAPi', error);
+  }
+}
+
+const getNewsSave = async (id_user) => {
+  try {
+    const response = await getApi.get(`getsavenews.php?iduser=${id_user}`)
+    if (response.data.success) {
+      return response.data;
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+
+
 export default {
   getByDay,
   getAll,
@@ -173,5 +278,10 @@ export default {
   getcategory,
   getVideoWeb,
   getNewsWeb,
-  getVideoByid
+  getVideoByid,
+  searchNews,
+  signUp,
+  login,
+  saveNews,
+  getNewsSave
 };

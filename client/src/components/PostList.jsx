@@ -16,6 +16,7 @@ const PostList = ({ data }) => {
                         title={item.title}
                         summary={item.summary}
                         create_time={item.create_time}
+                        name_page={item.name_page}
                     />
                 );
             })}

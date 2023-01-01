@@ -44,7 +44,7 @@ const Container = styled.div`
     display: flex;
     padding: 1rem;
     flex-direction: column;
-    border: 1px solid #d8d7d7;
+    /* border: 1px solid #d8d7d7; */
     h3 {
         position: relative;
         font-size: 23px;

@@ -8,6 +8,8 @@ import GetData from '../api/GetData'
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Divider } from 'antd';
 import Loading from '../components/Loading'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 
 const Category = () => {
@@ -46,7 +48,7 @@ const Category = () => {
 
 
   return (
-    <Container>
+      <Container>
         <div className="content" id="scrollableDiv"
             style={{
                 height:"210vh",
@@ -90,6 +92,9 @@ const Container = styled.div`
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 1rem;
+    @media only screen and (max-width: 685px) {
+        grid-template-columns: 2fr;
+    }
     .heading {
         position: relative;
         font-size: 23px;
@@ -125,13 +130,16 @@ const Container = styled.div`
         display: flex;
         flex-direction: column;
         gap: 1rem;
-        border: 1px solid #d8d7d7;
+        /* border: 1px solid #d8d7d7; */
         
     }
     .subContent {
         display: flex;
         flex-direction: column;
         gap: 1rem;
+        @media only screen and (max-width: 685px) {
+            display: none;
+        }
     }
 
 `

@@ -10,7 +10,9 @@ const DetailsNews = () => {
     const navigate = useNavigate()
     const [newsData, setNewsData] = useState([])
     const [hotNews, setHotNews] = useState([])
-    
+    const [audio,setAudio] = useState([]);
+    const [isPlaying,setIsPlaying] = useState(false);
+
     const getNewsById = async () => {
         const newsById = await GetData.getSingle(id)
         console.log(newsById);
@@ -38,6 +40,25 @@ const DetailsNews = () => {
         getHotNews()
     },[newsData.idcategory])
 
+    const togglePlay = () => {
+        isPlaying ? audio.pause() : audio.play();
+    };
+
+    useEffect(()=>{
+        const audio_get = document.getElementById('audio')
+        if(audio_get != null){
+            audio_get.onplaying = function() {
+                setIsPlaying(true)
+            };
+            audio_get.onpause = function() {
+                setIsPlaying(false)
+            };
+            setAudio(audio_get)
+        }
+    },[])
+
+    
+
     return (
         <Container>
             <div className="news">
@@ -49,12 +70,12 @@ const DetailsNews = () => {
                 <span>{newsData.summary}</span>
                 <img src={newsData.urlImage} alt="" />
                 <p>{newsData.content}</p>
-                <audio controls>
+                <audio controls id='audio'>
                     <source src={`http://3.0.209.240/audio/243469.mp3`} type="audio/mpeg"/>
                 </audio>
             </div>
             <div className="speaker">
-                <GiSpeaker />
+                <GiSpeaker onClick={togglePlay}/>
             </div>
 
             <div className="more">
@@ -101,11 +122,15 @@ const Container = styled.div`
             display: flex;
             gap: 1rem;
         }
+        audio {
+            display: none;
+        }
     }
     .speaker {
         position: absolute;
         right: 10px;
         top: 5px;
+        cursor: pointer;
         svg {
             font-size: 30px;
         }

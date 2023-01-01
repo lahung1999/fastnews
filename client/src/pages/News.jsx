@@ -26,11 +26,14 @@ const Conatiner = styled.div`
     grid-template-columns: 2fr 1fr;
     gap: 2rem;
     z-index: 99;
+    @media only screen and (max-width: 685px) {
+        grid-template-columns: 2fr;
+    }
     .section {
         display: flex;
         gap: 1rem;
         flex-direction: column;
-        border: 1px solid #d8d7d7;
+        /* border: 1px solid #d8d7d7; */
         padding: 1rem;
        
         .content {
@@ -41,6 +44,9 @@ const Conatiner = styled.div`
         display: flex;
         flex-direction: column;
         gap: 1rem;
+        @media only screen and (max-width: 685px) {
+            display: none;
+        }
     }
 `
 
